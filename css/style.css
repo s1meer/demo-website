@@ -58,6 +58,8 @@ body {
 }
 
 .lang-btn {
+  cursor: pointer;
+
     background: rgba(255, 255, 255, 0.2);
     padding: 5px 15px;
     border-radius: 20px;
@@ -544,3 +546,6 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* Make <a class=lang-btn> look like the buttons */
+a.lang-btn{display:inline-block;text-decoration:none;}
