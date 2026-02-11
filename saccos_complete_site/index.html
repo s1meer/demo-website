@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal Community SACCOS - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Popup Notification Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popup-overlay.active {
+            display: flex;
+        }
+        
+        .popup-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .popup-header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .popup-header .demo-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .popup-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+        
+        .popup-body {
+            padding: 30px;
+        }
+        
+        .popup-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .popup-logo img {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%);
+            border-radius: 50%;
+            padding: 15px;
+        }
+        
+        .popup-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .popup-title h2 {
+            color: #1e3a5f;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .popup-title p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .popup-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .popup-table th {
+            background: #1e3a5f;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+        
+        .popup-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+        
+        .popup-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .popup-footer {
+            text-align: center;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 0 0 15px 15px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .popup-content {
+                width: 95%;
+            }
+            
+            .popup-table {
+                font-size: 12px;
+            }
+            
+            .popup-table th, .popup-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Popup Notification -->
+    <div class="popup-overlay" id="popupNotification">
+        <div class="popup-content">
+            <div class="popup-header">
+                <span class="demo-badge">यो नमुना डेमो सूचना हो</span>
+                <button class="popup-close" onclick="closePopup()">×</button>
+                <div class="popup-logo">
+                    <div style="width: 80px; height: 80px; background: white; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 35px;">🏦</div>
+                </div>
+                <h2 style="margin: 15px 0 5px;">नेपाल सामुदायिक SACCOS</h2>
+                <p style="margin: 0; font-size: 14px; opacity: 0.9;">बचत तथा ऋण सहकारी संस्था लि.</p>
+                <p style="margin: 5px 0 0; font-size: 12px; opacity: 0.8;">पनौती-६, नमोबुद्ध</p>
+            </div>
+            <div class="popup-body">
+                <div class="popup-title">
+                    <h3 style="color: #1e3a5f; margin-bottom: 10px;">सहकारी निगमको मिति : २०८२ माघ ३१ गतेको निर्देशन र. स बमोजिम</h3>
+                    <p style="color: #ff6b6b; font-weight: bold;">यस संस्थाको मिति २०८२ पौष महिनाको कार्यकारिक परिणाम (कार्यरत्नुका) मितिमा विवरण</p>
+                    <p style="color: #666; font-size: 14px; margin-top: 5px;">मिति : २०८३/१०/०७</p>
+                </div>
+                <table class="popup-table">
+                    <thead>
+                        <tr>
+                            <th>क्र.सं.</th>
+                            <th>विवरण</th>
+                            <th>रकम रु.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>१</td>
+                            <td>शेयर पुँजी</td>
+                            <td>११६,०१२,६००/००</td>
+                        </tr>
+                        <tr>
+                            <td>२</td>
+                            <td>जम्मा कोष</td>
+                            <td>८८,५२१,०५,७८२</td>
+                        </tr>
+                        <tr>
+                            <td>३</td>
+                            <td>विभिन्न कोषहरु</td>
+                            <td>८५,०७८९१,६८</td>
+                        </tr>
+                        <tr>
+                            <td>४</td>
+                            <td>कुल संकलन पूँजी</td>
+                            <td>९२,९६०२,३७०</td>
+                        </tr>
+                        <tr>
+                            <td>५</td>
+                            <td>चालु सम्पत्ति लगानी</td>
+                            <td>१,०५०,४८४,३१,७१२</td>
+                        </tr>
+                        <tr>
+                            <td>६</td>
+                            <td>कुल सचल</td>
+                            <td>११,१५२,०७१,४२,३७८</td>
+                        </tr>
+                        <tr>
+                            <td>७</td>
+                            <td>सदस्य रकम</td>
+                            <td>३०४३०२४५६८</td>
+                        </tr>
+                        <tr>
+                            <td>८</td>
+                            <td>कुल सदस्य संख्या</td>
+                            <td>२५१९६</td>
+                        </tr>
+                        <tr>
+                            <td>१०</td>
+                            <td>कुल सम्पत्ति संस्का</td>
+                            <td>२४,९३२</td>
+                        </tr>
+                        <tr>
+                            <td>११</td>
+                            <td>कुल कार्य कर्मचारी</td>
+                            <td>२१,७०</td>
+                        </tr>
+                        <tr>
+                            <td>१२</td>
+                            <td>कुल शेयर संस्था संस्का</td>
+                            <td>२१,२२५</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="text-align: center; margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 10px; border-left: 4px solid #ff9800;">
+                    <p style="margin: 0; color: #856404; font-weight: 600;">⚠️ यो नमुना डेमो डाटा हो। वास्तविक डाटा होइन।</p>
+                </div>
+            </div>
+            <div class="popup-footer">
+                <p style="margin: 5px 0;"><strong>रुपान्तरण भाषा:</strong> निबेदक धनुषा</p>
+                <p style="margin: 5px 0;">Ph: ०११-४८०२६१२(Head Office), ४८१३९६ (Prabidhanathan), ४४४४१ (Syauchatar)</p>
+                <p style="margin: 5px 0;">डी.डी.आर.आईएस, वेब मोबाईल: ४८२०९८ Web: ०११५७७९२७६ Email: info@nepalcoop.coop.np Web: www.nepalcoop.coop.np</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show popup when page loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('popupNotification').classList.add('active');
+            }, 500);
+        });
+
+        // Function to close popup
+        function closePopup() {
+            document.getElementById('popupNotification').classList.remove('active');
+        }
+
+        // Close popup when clicking outside
+        document.addEventListener('click', function(event) {
+            const popup = document.getElementById('popupNotification');
+            if (event.target === popup) {
+                closePopup();
+            }
+        });
+    </script>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>📞 Call Us: +977-1-XXXXXX</span>
+                <span>📧 info@nepalcoop.coop.np</span>
+            </div>
+            <div class="top-bar-right">
+                <button class="lang-btn">🇳🇵 नेपाली</button>
+                <button class="lang-btn">🇬🇧 English</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-img">NS</div>
+                    <div class="logo-text">
+                        <h1>Nepal Community SACCOS</h1>
+                        <p>Saving & Credit Cooperative Society</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">🏠 Home</a></li>
+                <li>
+                    <a href="pages/introduction.html" target="_blank">ℹ️ Introduction</a>
+                    <ul>
+                        <li><a href="pages/objectives.html" target="_blank">Objectives</a></li>
+                        <li><a href="pages/mission-vision.html" target="_blank">Mission & Vision</a></li>
+                        <li><a href="pages/affiliations.html" target="_blank">Affiliations</a></li>
+                        <li><a href="pages/branches.html" target="_blank">Branch Details</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="pages/hrm.html" target="_blank">👥 HRM</a>
+                    <ul>
+                        <li><a href="pages/bod.html" target="_blank">Board of Directors</a></li>
+                        <li><a href="pages/management.html" target="_blank">Senior Management</a></li>
+                        <li><a href="pages/staff.html" target="_blank">Staff Members</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="pages/products.html" target="_blank">🎯 Products & Services</a>
+                    <ul>
+                        <li><a href="pages/savings.html" target="_blank">Saving Products</a></li>
+                        <li><a href="pages/loans.html" target="_blank">Loan Products</a></li>
+                        <li><a href="pages/insurance.html" target="_blank">Insurance Services</a></li>
+                        <li><a href="pages/remittance.html" target="_blank">Remittance</a></li>
+                        <li><a href="pages/mobile-banking.html" target="_blank">Mobile Banking</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="pages/programs.html" target="_blank">🌟 JMS Programs</a>
+                    <ul>
+                        <li><a href="pages/health-program.html" target="_blank">Health Programs</a></li>
+                        <li><a href="pages/training.html" target="_blank">Training Programs</a></li>
+                        <li><a href="pages/social-programs.html" target="_blank">Social Programs</a></li>
+                    </ul>
+                </li>
+                <li><a href="pages/news.html" target="_blank">📰 News & Activities</a></li>
+                <li>
+                    <a href="pages/downloads.html" target="_blank">📥 Downloads</a>
+                    <ul>
+                        <li><a href="pages/forms.html" target="_blank">Forms</a></li>
+                        <li><a href="pages/reports.html" target="_blank">Reports</a></li>
+                        <li><a href="pages/agm.html" target="_blank">AGM Publications</a></li>
+                    </ul>
+                </li>
+                <li><a href="pages/gallery.html" target="_blank">📸 Gallery</a></li>
+                <li><a href="pages/contact.html" target="_blank">📞 Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section style="background: linear-gradient(rgba(21, 101, 192, 0.8), rgba(13, 71, 161, 0.8)), url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 500%22%3E%3Crect fill=%22%231565C0%22 width=%221200%22 height=%22500%22/%3E%3C/svg%3E'); background-size: cover; padding: 100px 20px; color: white; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 48px; margin-bottom: 20px;">Welcome to Nepal Community SACCOS</h2>
+            <p style="font-size: 20px; margin-bottom: 30px;">Your Trusted Partner for Financial Growth and Prosperity</p>
+            <a href="pages/products.html" target="_blank" class="btn btn-primary">Our Services</a>
+            <a href="pages/contact.html" target="_blank" class="btn btn-secondary" style="margin-left: 15px;">Become a Member</a>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="content-section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+                <div style="height: 400px; background: linear-gradient(135deg, #1565C0 0%, #42A5F5 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 100px;">
+                    🏦
+                </div>
+                <div>
+                    <h3 style="color: #2196F3; font-size: 18px; margin-bottom: 10px;">WELCOME TO</h3>
+                    <h2 style="color: #1565C0; font-size: 42px; margin-bottom: 20px;">Nepal Community SACCOS</h2>
+                    <p style="color: #757575; margin-bottom: 15px; line-height: 1.8;">Nepal Community Saving & Credit Cooperative Society is a member-based cooperative established on July 11, 1999. We merged with 4 other SACCOS on January 3, 2013, creating a stronger institution to serve our community.</p>
+                    <p style="color: #757575; margin-bottom: 15px; line-height: 1.8;">Registered under the Co-operative Act 2048 BS, we work to improve the economic and social life of our members. As a democratic institution, every member has equal rights regardless of shareholding.</p>
+                    <p style="color: #757575; margin-bottom: 25px; line-height: 1.8;">We provide affordable financial services including savings, loans, insurance, and remittance to empower our community economically.</p>
+                    <a href="pages/introduction.html" target="_blank" class="btn btn-primary">Learn More About Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section style="background: #1565C0; padding: 60px 20px; color: white;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+                <div style="text-align: center; padding: 30px; background: rgba(255, 255, 255, 0.1); border-radius: 15px;">
+                    <div style="font-size: 50px; margin-bottom: 15px;">👥</div>
+                    <div style="font-size: 48px; font-weight: bold; margin-bottom: 10px;">15,000+</div>
+                    <div style="font-size: 18px;">Active Members</div>
+                </div>
+                <div style="text-align: center; padding: 30px; background: rgba(255, 255, 255, 0.1); border-radius: 15px;">
+                    <div style="font-size: 50px; margin-bottom: 15px;">🏢</div>
+                    <div style="font-size: 48px; font-weight: bold; margin-bottom: 10px;">12</div>
+                    <div style="font-size: 18px;">Service Centers</div>
+                </div>
+                <div style="text-align: center; padding: 30px; background: rgba(255, 255, 255, 0.1); border-radius: 15px;">
+                    <div style="font-size: 50px; margin-bottom: 15px;">💰</div>
+                    <div style="font-size: 48px; font-weight: bold; margin-bottom: 10px;">Rs. 2.5B</div>
+                    <div style="font-size: 18px;">Total Savings</div>
+                </div>
+                <div style="text-align: center; padding: 30px; background: rgba(255, 255, 255, 0.1); border-radius: 15px;">
+                    <div style="font-size: 50px; margin-bottom: 15px;">📈</div>
+                    <div style="font-size: 48px; font-weight: bold; margin-bottom: 10px;">Rs. 3.2B</div>
+                    <div style="font-size: 18px;">Loans Disbursed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="content-section" style="background: #E3F2FD;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 42px; color: #1565C0; margin-bottom: 15px;">Our Services</h2>
+                <p style="font-size: 18px; color: #757575;">Comprehensive Financial Solutions for All Your Needs</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                <div class="card">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #1565C0 0%, #42A5F5 100%); border-radius: 50%; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; font-size: 35px; color: white;">💰</div>
+                    <h3 style="text-align: center;">Saving Accounts</h3>
+                    <p style="text-align: center;">Multiple saving schemes with competitive interest rates for your secure financial future.</p>
+                    <div style="text-align: center;">
+                        <a href="pages/savings.html" target="_blank" style="color: #1565C0; font-weight: 600;">Learn More →</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #1565C0 0%, #42A5F5 100%); border-radius: 50%; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; font-size: 35px; color: white;">🏦</div>
+                    <h3 style="text-align: center;">Loan Services</h3>
+                    <p style="text-align: center;">Affordable loans for business, education, agriculture, housing, and emergency needs.</p>
+                    <div style="text-align: center;">
+                        <a href="pages/loans.html" target="_blank" style="color: #1565C0; font-weight: 600;">Learn More →</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #1565C0 0%, #42A5F5 100%); border-radius: 50%; margin: 0 auto 25px; display: flex; align-items: center; justify-content: center; font-size: 35px; color: white;">🛡️</div>
+                    <h3 style="text-align: center;">Insurance</h3>
+                    <p style="text-align: center;">Life, health, and accident insurance to protect you and your family.</p>
+                    <div style="text-align: center;">
+                        <a href="pages/insurance.html" target="_blank" style="color: #1565C0; font-weight: 600;">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="content-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 42px; color: #1565C0; margin-bottom: 15px;">📢 Latest News & Notices</h2>
+                <p style="font-size: 18px; color: #757575;">Stay Updated with Our Latest Announcements</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="card">
+                    <span style="color: #2196F3; font-size: 14px; font-weight: 600;">Magh 3, 2082</span>
+                    <h3>License from National Authority</h3>
+                    <p>Successfully obtained license from National Cooperative Regulation Authority.</p>
+                    <a href="pages/news.html" target="_blank" style="color: #1565C0; font-weight: 600;">Read More →</a>
+                </div>
+                <div class="card">
+                    <span style="color: #2196F3; font-size: 14px; font-weight: 600;">Poush 30, 2082</span>
+                    <h3>Interest Rate Revision</h3>
+                    <p>New interest rates for savings and loans effective from Magh 1, 2082.</p>
+                    <a href="pages/news.html" target="_blank" style="color: #1565C0; font-weight: 600;">Read More →</a>
+                </div>
+                <div class="card">
+                    <span style="color: #2196F3; font-size: 14px; font-weight: 600;">Kartik 1, 2082</span>
+                    <h3>26th Annual General Meeting</h3>
+                    <p>AGM to be held in 6 different units across our service areas.</p>
+                    <a href="pages/news.html" target="_blank" style="color: #1565C0; font-weight: 600;">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About SACCOS</h3>
+                    <p>Nepal Community SACCOS is committed to providing quality financial services to empower our members economically and socially.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" target="_blank">f</a>
+                        <a href="#" class="social-icon" target="_blank">t</a>
+                        <a href="#" class="social-icon" target="_blank">in</a>
+                        <a href="#" class="social-icon" target="_blank">📷</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="pages/introduction.html" target="_blank">About Us</a></li>
+                        <li><a href="pages/products.html" target="_blank">Products & Services</a></li>
+                        <li><a href="pages/branches.html" target="_blank">Branch Network</a></li>
+                        <li><a href="pages/downloads.html" target="_blank">Downloads</a></li>
+                        <li><a href="pages/contact.html" target="_blank">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="pages/savings.html" target="_blank">Savings Account</a></li>
+                        <li><a href="pages/loans.html" target="_blank">Loans</a></li>
+                        <li><a href="pages/insurance.html" target="_blank">Insurance</a></li>
+                        <li><a href="pages/remittance.html" target="_blank">Remittance</a></li>
+                        <li><a href="pages/mobile-banking.html" target="_blank">Mobile Banking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>📍 Panauti-6, Kavre District<br>Namobuddha Road, Nepal</p>
+                    <p>📞 +977-1-XXXXXX<br>📧 info@nepalcoop.coop.np</p>
+                    <p><strong>Office Hours:</strong><br>Sun - Fri: 10:00 AM - 5:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Nepal Community SACCOS. All Rights Reserved. | Developed by Sammy</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
